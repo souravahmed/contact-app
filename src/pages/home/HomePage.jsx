@@ -23,7 +23,9 @@ const HomePage = () => {
   contacts = contactState?.contacts?.filter((contact) => {
     return (
       contact.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      contact.email.toLowerCase().includes(searchQuery.toLowerCase())
+      contact.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      contact.company.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      contact.description.toLowerCase().includes(searchQuery.toLowerCase())
     );
   });
 
@@ -34,7 +36,7 @@ const HomePage = () => {
   return (
     <div className="card m-5">
       <div className="card-header">
-        Total user: {contactState?.contacts?.length}
+        Total contacts: {contactState?.contacts?.length}
       </div>
       <div className="card-body">
         <div className="row">

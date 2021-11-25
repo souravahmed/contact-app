@@ -2,7 +2,6 @@ import React from "react";
 import { addContact } from "../../redux";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import LinkButton from "../../components/LinkButton";
 
 const ContactPage = () => {
   const dispatch = useDispatch();
@@ -23,53 +22,65 @@ const ContactPage = () => {
 
   return (
     <div className="d-flex-column mt-5 w-50">
-      <h2 className="text-center">Add Contact</h2>
+      <h1 className="mb-20">Add Contact</h1>
       <form onSubmit={handleSubmit}>
-        <div className="mt-2 border border-dark border-3 rounded">
+        <div className="mt-2">
+          <label className="form-label">
+            Name <span className="text-danger fs-4">*</span>
+          </label>
           <input
-            className="form-control"
+            className="form-control border border-dark border-1 rounded"
             type="text"
-            placeholder="Name"
             name="name"
             required
           />
         </div>
-        <div className="mt-2 border border-dark border-3 rounded">
+        <div className="mt-2 ">
+          <label className="form-label">
+            Email <span className="text-danger fs-4">*</span>
+          </label>
           <input
-            className="form-control"
+            className="form-control border border-dark border-1 rounded"
             type="email"
-            placeholder="Email"
             name="email"
             required
           />
         </div>
-        <div className="mt-2 border border-dark border-3 rounded">
+        <div className="mt-2 ">
+          <label className="form-label">
+            Company <span className="text-danger fs-4">*</span>
+          </label>
           <input
-            className="form-control"
+            className="form-control border border-dark border-1 rounded"
             type="text"
-            placeholder="Company"
             name="company"
             required
           />
         </div>
-        <div className="mt-2 border border-dark border-3 rounded">
+        <div className="mt-2 ">
+          <label className="form-label">
+            Description <span className="text-danger fs-4">*</span>
+          </label>
           <textarea
-            className="form-control"
-            placeholder="Description"
+            className="form-control border border-dark border-1 rounded"
             name="description"
+            rows="5"
             required
           ></textarea>
         </div>
 
-        <button type="submit" className="btn btn-dark mt-3">
+        <button
+          type="submit"
+          className="btn btn-dark mt-3"
+          style={{
+            minWidth: "190px",
+            fontSize: "14px",
+            padding: "0 2em",
+            lineHeight: "2.72",
+          }}
+        >
           Submit
         </button>
-        <LinkButton
-          path="/contacts"
-          btnClasses="btn btn-md btn-success ms-3 mt-3"
-          text="Back"
-          iconClass="fas fa-long-arrow-alt-left"
-        ></LinkButton>
       </form>
     </div>
   );
