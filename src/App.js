@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes, Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.css";
+import HomePage from "./pages/home/HomePage";
+import ContactPage from "./pages/contact/ContactPage";
+import dbSeeder from "./services/dbSeeder";
 
 function App() {
+  useEffect(() => {
+    dbSeeder();
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <Routes>
+        <Route exact path="/" element={<Navigate to="/contacts" />} />
+        <Route exact path="/add" element={<ContactPage />} />
+        <Route exact path="/contacts" element={<HomePage />} />
+      </Routes>
     </div>
   );
 }
